@@ -13,6 +13,8 @@
 		1C40CD0D2856129E00585032 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C40CD0B2856129E00585032 /* Main.storyboard */; };
 		1C40CD0F2856129F00585032 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C40CD0E2856129F00585032 /* Assets.xcassets */; };
 		1C40CD122856129F00585032 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C40CD102856129F00585032 /* LaunchScreen.storyboard */; };
+		1C40CD1A28561C6700585032 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD1928561C6700585032 /* SettingTableViewCell.swift */; };
+		1C40CD1C2856459300585032 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD1B2856459300585032 /* SwitchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		1C40CD0E2856129F00585032 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C40CD112856129F00585032 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C40CD132856129F00585032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C40CD1928561C6700585032 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		1C40CD1B2856459300585032 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				1C40CD0E2856129F00585032 /* Assets.xcassets */,
 				1C40CD102856129F00585032 /* LaunchScreen.storyboard */,
 				1C40CD132856129F00585032 /* Info.plist */,
+				1C40CD1928561C6700585032 /* SettingTableViewCell.swift */,
+				1C40CD1B2856459300585032 /* SwitchTableViewCell.swift */,
 			);
 			path = "Settings screen TableView";
 			sourceTree = "<group>";
@@ -140,6 +146,8 @@
 			files = (
 				1C40CD0A2856129E00585032 /* ViewController.swift in Sources */,
 				1C40CD062856129E00585032 /* AppDelegate.swift in Sources */,
+				1C40CD1C2856459300585032 /* SwitchTableViewCell.swift in Sources */,
+				1C40CD1A28561C6700585032 /* SettingTableViewCell.swift in Sources */,
 				1C40CD082856129E00585032 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
