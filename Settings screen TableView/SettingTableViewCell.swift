@@ -10,7 +10,7 @@ import UIKit
 class SettingTableViewCell: UITableViewCell {
 static let identifier = "SettingTableViewCell"
     
-    private let iconContainer: UIView = {
+    private lazy var iconContainer: UIView = {
         let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 8

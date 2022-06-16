@@ -14,20 +14,40 @@ struct Section {
 enum SettingsOptionType {
     case staticCell(model: SettingsOption)
     case switchCell(model: SettingsSwitchOption)
-    
-    struct SettingsSwitchOption {
-        let title: String
-        let icon: UIImage?
-        let iconBackgroundColor: UIColor
-        let handler: (() -> Void)
-        var isOn: Bool
+    case greyLabel(model: SettingsGreyLabelOption)
+    case redLogo(model: SettingsRedLogoOption)
     }
+
+struct SettingsSwitchOption {
+    let title: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    var isOn: Bool
 }
+
 struct SettingsOption {
     let title: String
     let icon: UIImage?
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
+}
+
+struct SettingsGreyLabelOption {
+    let title: String
+    let title2: String
+    let icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    
+}
+struct SettingsRedLogoOption {
+    let title: String
+    let icon: UIImage?
+    let icon2: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -37,6 +57,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         
         table.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.identifier)
+        
+        table.register(GreyLabelTableViewCell.self, forCellReuseIdentifier: GreyLabelTableViewCell.identifier)
+        
+        table.register(RedLabelTableViewCell.self, forCellReuseIdentifier: RedLabelTableViewCell.identifier)
         
         return table
     }()
@@ -55,14 +79,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func configure() {
-        models.append(Section(title:"Information", options: [
-            .staticCell(model: SettingsOption(title: "Авиарежим", icon: UIImage(systemName: "airplane"), iconBackgroundColor: .systemOrange) {
-                print("Нажата ячейка Airplane mode")
-            }),
-            .staticCell(model: SettingsOption(title: "Wi-Fi", icon: UIImage(systemName: "wifi"), iconBackgroundColor: .systemBlue) {
-                print("Нажата ячейка wifi")
-            }),
-            .staticCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "camera.macro.circle.fill"), iconBackgroundColor: .systemBlue) {
+        models.append(Section(title:"General", options: [
+            .switchCell(model: SettingsSwitchOption(title: "Авиарежим", icon: UIImage(systemName: "airplane"), iconBackgroundColor: .systemOrange, handler: {
+                
+            }, isOn:  false)
+                       ),
+            
+                .greyLabel(model: SettingsGreyLabelOption(title: "Wi-Fi", title2: "Не подключено", icon: UIImage(systemName: "wifi"), iconBackgroundColor: .systemBlue) {
+                }),
+            .staticCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "wifi"), iconBackgroundColor: .systemBlue) {
                 print("Нажата ячейка bluetooth")
             }),
             .staticCell(model: SettingsOption(title: "Сотовая связь", icon: UIImage(systemName: "antenna.radiowaves.left.and.right"), iconBackgroundColor: .systemGreen) {
@@ -71,9 +96,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             .staticCell(model: SettingsOption(title: "Режим модема", icon: UIImage(systemName: "personalhotspot"), iconBackgroundColor: .systemGreen) {
                 print("Нажата ячейка Режим модема")
             }),
+            .switchCell(model: SettingsSwitchOption(title: "VPN", icon: UIImage(systemName: "network"), iconBackgroundColor: .systemBlue, handler: {
+                
+            }, isOn:  false)
+                       ),
             
-            ]))
-            
+        ]))
         
         models.append(Section(title:"Information", options: [
             .staticCell(model: SettingsOption(title: "Уведомления", icon: UIImage(systemName: "message.circle"), iconBackgroundColor: .systemPink) {
@@ -92,8 +120,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             ]))
         
         models.append(Section(title:"Apps", options: [
-            .staticCell(model: SettingsOption(title: "Основные", icon: UIImage(systemName: "gear"), iconBackgroundColor: .systemGray2) {
-                print("Нажата ячейка Основные")
+             .redLogo(model: SettingsRedLogoOption(title: "Основные", icon: UIImage(systemName: "gear"), icon2: UIImage(systemName: "1.circle"), iconBackgroundColor: .systemGray2) {
+
             }),
             .staticCell(model: SettingsOption(title: "Пункт управления", icon: UIImage(systemName: "switch.2"), iconBackgroundColor: .systemGray2) {
                 print("Пункт управления")
@@ -101,20 +129,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             .staticCell(model: SettingsOption(title: "Экран и яркость", icon: UIImage(systemName: "textformat.size"), iconBackgroundColor: .systemBlue) {
                 print("Нажата ячейка Экран и яркость")
             }),
-            .staticCell(model: SettingsOption(title: "Экран домой", icon: UIImage(systemName: "rectangle.on.rectangle"), iconBackgroundColor: .systemBlue) {
+            .staticCell(model: SettingsOption(title: "Экран \("Домой")", icon: UIImage(systemName: "rectangle.on.rectangle"), iconBackgroundColor: .systemBlue) {
                 print("Нажата ячейка Экран домой")
             }),
             .staticCell(model: SettingsOption(title: "Универсальный доступ", icon: UIImage(systemName: "hand.thumbsup.fill"), iconBackgroundColor: .systemBlue) {
-                print("Нажата ячейка Экран домой")
+                print("Универсальный доступ")
             }),
             
             ]))
-        
+    }
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
             let section = models[section]
             return section.title
         }
-    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return models.count
@@ -126,23 +154,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].options[indexPath.row]
-        
-        switch model.self {
-        case .staticCell(let model):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath
-            ) as? SettingTableViewCell else {
-                return UITableViewCell()
-            }
-            cell.configure(with: model)
-            return cell
-        case .switchCell(let model):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath
-            ) as? SwitchTableViewCell else {
-                return UITableViewCell()
-            }
-            return cell
-            
-        }
+    
+       
+      switch model.self {
+          
+      case .staticCell(let model):
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath)
+              as? SettingTableViewCell else {
+          return UITableViewCell()
+          }
+          cell.configure(with: model)
+          return cell
+  
+      case .switchCell(let model):
+          guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath
+          ) as? SwitchTableViewCell else {
+              return UITableViewCell()
+          }
+          cell.configure(with: model)
+          return cell
+      
+   
+      case .greyLabel(let model):
+          guard let cell = tableView.dequeueReusableCell(withIdentifier: GreyLabelTableViewCell.identifier, for: indexPath)
+                    as? GreyLabelTableViewCell else {
+              return UITableViewCell()
+          }
+          cell.configure(with: model)
+          return cell
+          
+          
+      case .redLogo(let model):
+          guard let cell = tableView.dequeueReusableCell(withIdentifier: RedLabelTableViewCell.identifier, for: indexPath)
+                    as? RedLabelTableViewCell else {
+              return UITableViewCell()
+          }
+          cell.configure(with: model)
+          return cell
+      }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -152,6 +201,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case .staticCell(let model):
             model.handler()
         case .switchCell(let model):
+            model.handler()
+        case .greyLabel(model: let model):
+            model.handler()
+        case .redLogo(model: let model):
             model.handler()
         }
     }

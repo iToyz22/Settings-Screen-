@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C2081C2285A6A0500F717BD /* RedLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2081C1285A6A0500F717BD /* RedLabelTableViewCell.swift */; };
 		1C40CD062856129E00585032 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD052856129E00585032 /* AppDelegate.swift */; };
 		1C40CD082856129E00585032 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD072856129E00585032 /* SceneDelegate.swift */; };
 		1C40CD0A2856129E00585032 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD092856129E00585032 /* ViewController.swift */; };
@@ -15,9 +16,11 @@
 		1C40CD122856129F00585032 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C40CD102856129F00585032 /* LaunchScreen.storyboard */; };
 		1C40CD1A28561C6700585032 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD1928561C6700585032 /* SettingTableViewCell.swift */; };
 		1C40CD1C2856459300585032 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD1B2856459300585032 /* SwitchTableViewCell.swift */; };
+		1C40CD20285A130F00585032 /* GreyLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C40CD1F285A130F00585032 /* GreyLabelTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C2081C1285A6A0500F717BD /* RedLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedLabelTableViewCell.swift; sourceTree = "<group>"; };
 		1C40CD022856129E00585032 /* Settings screen TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Settings screen TableView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C40CD052856129E00585032 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C40CD072856129E00585032 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		1C40CD132856129F00585032 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C40CD1928561C6700585032 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		1C40CD1B2856459300585032 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		1C40CD1F285A130F00585032 /* GreyLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreyLabelTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				1C40CD132856129F00585032 /* Info.plist */,
 				1C40CD1928561C6700585032 /* SettingTableViewCell.swift */,
 				1C40CD1B2856459300585032 /* SwitchTableViewCell.swift */,
+				1C40CD1F285A130F00585032 /* GreyLabelTableViewCell.swift */,
+				1C2081C1285A6A0500F717BD /* RedLabelTableViewCell.swift */,
 			);
 			path = "Settings screen TableView";
 			sourceTree = "<group>";
@@ -144,7 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C40CD20285A130F00585032 /* GreyLabelTableViewCell.swift in Sources */,
 				1C40CD0A2856129E00585032 /* ViewController.swift in Sources */,
+				1C2081C2285A6A0500F717BD /* RedLabelTableViewCell.swift in Sources */,
 				1C40CD062856129E00585032 /* AppDelegate.swift in Sources */,
 				1C40CD1C2856459300585032 /* SwitchTableViewCell.swift in Sources */,
 				1C40CD1A28561C6700585032 /* SettingTableViewCell.swift in Sources */,

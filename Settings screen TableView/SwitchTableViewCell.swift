@@ -28,7 +28,7 @@ static let identifier = "SwitchTableViewCell"
     
     private let mySwitch: UISwitch = {
         let mySwitch = UISwitch()
-        mySwitch.onTintColor = .systemBlue
+        mySwitch.onTintColor = .systemGreen
         return mySwitch
     }()
     
@@ -56,7 +56,7 @@ static let identifier = "SwitchTableViewCell"
        
         mySwitch.sizeToFit()
         mySwitch.frame = CGRect(x: contentView.frame.size.width - mySwitch.frame.size.width - 20,
-                                y: contentView.frame.size.height - mySwitch.frame.size.width/2,
+                                y: contentView.frame.size.height - mySwitch.frame.size.height - 8,
                                 width: mySwitch.frame.size.width,
                                 height: mySwitch.frame.size.height)
         
@@ -75,10 +75,11 @@ static let identifier = "SwitchTableViewCell"
         mySwitch.isOn = false
     }
     
-    public func configure(with model: SettingsOption) {
+    public func configure(with model:SettingsSwitchOption) {
         label.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
+        mySwitch.isOn = model.isOn
        
     }
 }
