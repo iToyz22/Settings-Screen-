@@ -81,13 +81,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func configure() {
         models.append(Section(title:"General", options: [
             .switchCell(model: SettingsSwitchOption(title: "Авиарежим", icon: UIImage(systemName: "airplane"), iconBackgroundColor: .systemOrange, handler: {
-                
-            }, isOn:  false)
-                       ),
+            }, isOn:  false)),
             
                 .greyLabel(model: SettingsGreyLabelOption(title: "Wi-Fi", title2: "Не подключено", icon: UIImage(systemName: "wifi"), iconBackgroundColor: .systemBlue) {
                 }),
-            .staticCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "wifi"), iconBackgroundColor: .systemBlue) {
+            .staticCell(model: SettingsOption(title: "Bluetooth", icon: UIImage(systemName: "bolt"), iconBackgroundColor: .systemBlue) {
                 print("Нажата ячейка bluetooth")
             }),
             .staticCell(model: SettingsOption(title: "Сотовая связь", icon: UIImage(systemName: "antenna.radiowaves.left.and.right"), iconBackgroundColor: .systemGreen) {
@@ -98,8 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }),
             .switchCell(model: SettingsSwitchOption(title: "VPN", icon: UIImage(systemName: "network"), iconBackgroundColor: .systemBlue, handler: {
                 
-            }, isOn:  false)
-                       ),
+            }, isOn:  false)),
             
         ]))
         
@@ -117,11 +114,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Нажата ячейка Экранное время")
             }),
             
-            ]))
+        ]))
         
         models.append(Section(title:"Apps", options: [
-             .redLogo(model: SettingsRedLogoOption(title: "Основные", icon: UIImage(systemName: "gear"), icon2: UIImage(systemName: "1.circle"), iconBackgroundColor: .systemGray2) {
-
+            .redLogo(model: SettingsRedLogoOption(title: "Основные", icon: UIImage(systemName: "gear"), icon2: UIImage(systemName: "1.circle"), iconBackgroundColor: .systemGray2) {
+                
             }),
             .staticCell(model: SettingsOption(title: "Пункт управления", icon: UIImage(systemName: "switch.2"), iconBackgroundColor: .systemGray2) {
                 print("Пункт управления")
@@ -136,12 +133,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Универсальный доступ")
             }),
             
-            ]))
+        ]))
     }
-        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            let section = models[section]
-            return section.title
-        }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let section = models[section]
+        return section.title
+    }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,44 +151,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = models[indexPath.section].options[indexPath.row]
-    
-       
-      switch model.self {
-          
-      case .staticCell(let model):
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath)
-              as? SettingTableViewCell else {
-          return UITableViewCell()
-          }
-          cell.configure(with: model)
-          return cell
-  
-      case .switchCell(let model):
-          guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath
-          ) as? SwitchTableViewCell else {
-              return UITableViewCell()
-          }
-          cell.configure(with: model)
-          return cell
-      
-   
-      case .greyLabel(let model):
-          guard let cell = tableView.dequeueReusableCell(withIdentifier: GreyLabelTableViewCell.identifier, for: indexPath)
+        
+        
+        switch model.self {
+            
+        case .staticCell(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath)
+                    as? SettingTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+            
+        case .switchCell(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath
+            ) as? SwitchTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+            
+            
+        case .greyLabel(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: GreyLabelTableViewCell.identifier, for: indexPath)
                     as? GreyLabelTableViewCell else {
-              return UITableViewCell()
-          }
-          cell.configure(with: model)
-          return cell
-          
-          
-      case .redLogo(let model):
-          guard let cell = tableView.dequeueReusableCell(withIdentifier: RedLabelTableViewCell.identifier, for: indexPath)
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+            
+            
+        case .redLogo(let model):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RedLabelTableViewCell.identifier, for: indexPath)
                     as? RedLabelTableViewCell else {
-              return UITableViewCell()
-          }
-          cell.configure(with: model)
-          return cell
-      }
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
